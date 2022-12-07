@@ -1,0 +1,2 @@
+C:\Users\omidk\OneDrive\Bureau\VenomRAT\Venom RAT + HVNC\obj\Debug\Venom RAT + HVNC.csproj.AssemblyReference.cache
+C:\Users\omidk\OneDrive\Bureau\VenomRAT\Venom RAT + HVNC\obj\Debug\Venom RAT + HVNC.csproj.CoreCompileInputs.cache

